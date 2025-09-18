@@ -117,6 +117,9 @@ fn start_auto_update_check_(rx_msg: Receiver<UpdateMsg>) {
 }
 
 fn check_update(manually: bool) -> ResultType<()> {
+    // 直接返回 Ok(())，完全跳过更新检查
+    return Ok(());
+   /*
     #[cfg(target_os = "windows")]
     let is_msi = crate::platform::is_msi_installed()?;
     if !(manually || config::Config::get_bool_option(config::keys::OPTION_ALLOW_AUTO_UPDATE)) {
@@ -192,7 +195,9 @@ fn check_update(manually: bool) -> ResultType<()> {
             update_new_version(is_msi, &version, &file_path);
         }
     }
+    
     Ok(())
+    */
 }
 
 #[cfg(target_os = "windows")]
